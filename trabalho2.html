@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .caixa {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 90%;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #mensagem {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="caixa">
+        <h2>Login</h2>
+        <input type="text" id="login" placeholder="Usuário"><br>
+        <input type="password" id="senha" placeholder="Senha"><br>
+        <button onclick="verificarLogin()">Entrar</button>
+        <p id="mensagem"></p>
+    </div>
+
+    <script>
+        var logins = ["joao", "maria", "thiago"];
+        var senhas = ["1234", "abcd", "senha123"];
+
+        function verificarLogin() {
+            var user = document.getElementById("login").value;
+            var pass = document.getElementById("senha").value;
+            var mensagem = document.getElementById("mensagem");
+            var autenticado = false;
+
+            for (var i = 0; i < logins.length; i++) {
+                if (user === logins[i] && pass === senhas[i]) {
+                    autenticado = true;
+                    break;
+                }
+            }
+
+            if (autenticado) {
+                mensagem.style.color = "green";
+                mensagem.innerHTML = "Redirecionando...";
+                
+                // Redireciona para a página desejada após 3 segundos
+                setTimeout(function() {
+                    window.location.href = "file:///C:/Users/aluno.LABVDN-21PROZ/Desktop/THIAGO/trabalho2.2.html"; //
+                }, 3000);
+            } else {
+                mensagem.innerHTML = "";
+                
+                setTimeout(function() {
+                    mensagem.style.color = "red";
+                    mensagem.innerHTML = "Login ou senha incorretos, tente novamente.";
+                    
+                    // Limpa os campos
+                    document.getElementById("login").value = "";
+                    document.getElementById("senha").value = "";
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
