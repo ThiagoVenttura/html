@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 18px;
+        }
+
+        a:hover {
+            color: #004d99;
+            text-decoration: underline;
+        }
+
+        #detalhes {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #444;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        The World is yours: Cursos de Idiomas
+    </header>
+    <h2>Escolha um curso para mais detalhes</h2>
+    <ul>
+        <li><a href="https://www.primecursos.com.br/espanhol-basico/?msclkid=ee85036adde014a36f2d6bdc36fb8d99&utm_source=bing&utm_medium=cpc&utm_campaign=%5BMAC4%5D%20%5BSearch%5D%20Isolada-KW-ESPANHOL-B%C3%81SICO&utm_term=curso%20de%20espanhol%20gratuito&utm_content=Espanhol%20B%C3%A1sico"
+                onclick="CarregarCurso('Espanhol')">Curso de Espanhol</a></li>
+        <li><a href="https://www.yazigi.com.br/" onclick="CarregarCurso('Ingles')">Curso de Inglês</a></li>
+        <li><a href="https://www.bing.com/aclick?ld=e8OQi_mC2RkeEdkXVgUoEj1TVUCUyyLjrWEoJpxaTrWnMETloKPzkWbFa2vAf31_w6B_KMd5HoqFlUSdvM-TeExaDYdDsObeZ9akESw8ohViUzdllzSYEy3dXEsYar2EdGvxjg2ZQf5N-a_JwolgaQugTLi6wbl5k9OSoXXKH4VugCzyhj-C0F91qeGaP7Pw7HoqbuXQ&u=aHR0cHMlM2ElMmYlMmZ0YWxrcGFsLmFpJTJmZ2V0LXN0YXJ0ZWQlMmZwdC1iciUzZnRhcmdldF9sYW5ndWFnZSUzZGl0JTI2dXRtX3Rlcm0lM2RhdWxhcyUyNTIwZGUlMjUyMGl0YWxpYW5vJTI1MjBnciVjMyVhMXRpcyUyNnV0bV9jYW1wYWlnbiUzZDQ4NTQ2NDc2NiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZHBwYyUyNmhzYV9hY2MlM2Q3NDA5OTkyMTMxJTI2aHNhX2NhbSUzZDIwMzI0Mzk4Mjk0JTI2aHNhX2dycCUzZDEyMjU5NTY1MjY2NDc2OTclMjZoc2FfYWQlM2QlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzY2MjI2ODU3NDEwNDAlM2FhdWQtODIwODk0NDk2JTNhbG9jLTIwJTI2aHNhX2t3JTNkYXVsYXMlMjUyMGRlJTI1MjBpdGFsaWFubyUyNTIwZ3IlYzMlYTF0aXMlMjZoc2FfbXQlM2RlJTI2aHNhX25ldCUzZGFkd29yZHMlMjZoc2FfdmVyJTNkMyUyNm1zY2xraWQlM2RkYjRjNzg1N2M1ZTMxMjU0NTY4MjEwZTEyOWFjYzFkZiUyNnV0bV9jb250ZW50JTNkMDA3LiUyNTIwQWQlMjUyMGdyb3VwJTI1MjAwNiUyNTIwUE9SJTI1MjAoSXRhbGlhbik&rlid=db4c7857c5e31254568210e129acc1df"
+                onclick="CarregarCurso('Italiano')">Curso de Italiano</a></li>
+    </ul>
+
+    <div id="detalhes"></div>
+    <footer>
+        copy;2025 The World is yours.Todos os direitos reservados.
+        <p>Telefone:(31) 9132-8922</p>
+        <a href="https://www.instagram.com/luzianalannavn?igsh=M3hqZzR0b2s4djJ0">instagram</a>
+
+    </footer>
+    <script>
+        async function CarregarCurso(curso) {
+            try {
+                document.getElementById("detalhes").innerHTML = "Carregando informações do curso...";
+
+                // Simulate loading with a delay
+                await new Promise(resolve => setTimeout(resolve, 4000));
+
+                // Predefined messages for each course
+                let mensagem = {
+                    "Espanhol": "Aprenda espanhol de forma prática e dinâmica, desenvolvendo habilidades de conversação, leitura e escrita para uso pessoal, acadêmico ou profissional.",
+                    "Ingles": "Domine o inglês com aulas dinâmicas e práticas que desenvolvem sua fluência para o dia a dia, viagens e carreira internacional.",
+                    "Italiano": "Aprenda italiano do zero com um curso envolvente que combina cultura, conversação e gramática de forma leve e eficiente."
+                };
+
+                // Set the course description
+                document.getElementById("detalhes").innerHTML = mensagem[curso];
+
+                // After loading, redirect to another page (example: "curso.html")
+                window.location.href = "curso.html"; // Replace with the desired URL
+
+            } catch (erro) {
+                document.getElementById("detalhes").innerHTML = "Erro: " + erro.message;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

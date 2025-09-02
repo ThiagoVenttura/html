@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <header>
+        The World is yours: Cursos de Idiomas
+    </header>
+    <h2>Escolha um curso para mais detalhes</h2>
+    <ul>
+        <li onclick="CarregarCurso('Espanhol')">Curso de Espanhol</li>
+        <li onclick="CarregarCurso('Ingles')">Curos de Ingles</li>
+        <li onclick="CarregarCurso('Italiano')">Curso de Italiano</li>
+
+    </ul>
+    <div id="detalhes"></div>
+    <footer>
+        copy;2025 The World is yours.Todos os direitos reservados.
+        <p>Telefone:(31) 9132-8922</p>
+        <a href="https://www.instagram.com/luzianalannavn?igsh=M3hqZzR0b2s4djJ0">instagram</a>
+
+    </footer>
+    <script>
+async function CarregarCurso(curso) {
+    try {
+        document.getElementById("detalhes").innerHTML = "Carregando informações do curso...";
+
+        // Simulate loading with a delay
+        await new Promise(resolve => setTimeout(resolve, 4000));
+
+        // Predefined messages for each course
+        let mensagem = {
+            "Espanhol": "Aprenda espanhol de forma prática e dinâmica, desenvolvendo habilidades de conversação, leitura e escrita para uso pessoal, acadêmico ou profissional.",
+            "Ingles": "Domine o inglês com aulas dinâmicas e práticas que desenvolvem sua fluência para o dia a dia, viagens e carreira internacional.",
+            "Italiano": "Aprenda italiano do zero com um curso envolvente que combina cultura, conversação e gramática de forma leve e eficiente."
+        };
+
+        // Set the course description
+        document.getElementById("detalhes").innerHTML = mensagem[curso];
+
+        // After loading, redirect to another page (example: "curso.html")
+        window.location.href = "curso.html"; // Replace with the desired URL
+
+    } catch (erro) {
+        document.getElementById("detalhes").innerHTML = "Erro: " + erro.message;
+    }
+}
+
+
+    </script>
+</body>
+
+</html>
