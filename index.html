@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual do Dia</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    #buttons {
+        margin-bottom: 20px;
+    }
+
+    #buttons button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        border: none;
+        font-weight: bold;
+    }
+
+    #buttons button:hover {
+        background-color: #444;
+    }
+
+    #content {
+        position: relative;
+        text-align: center;
+    }
+
+    #image {
+        width: 60%;  /* Tamanho da imagem reduzido */
+        max-width: 800px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    #text-box {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.6);  /* Caixa semi-transparente */
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        width: 80%; /* Tamanho da caixa */
+        max-width: 500px;
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9em;
+        color: #333;
+    }
+
+    #popup {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #popup div {
+        background: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #popup button {
+        padding: 8px 16px;
+        background-color: #1E3A8A;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #popup button:hover {
+        background-color: #163273;
+    }
+</style>
+</head>
+<body>
+
+<div id="buttons">
+    <button onclick="setVisual('manha')">Manhã</button>
+    <button onclick="setVisual('tarde')">Tarde</button>
+    <button onclick="setVisual('noite')">Noite</button>
+</div>
+
+<div id="content">
+    <img id="image" src="" alt="Visual do dia">
+    <div id="text-box">
+        <div id="message">Acredite no seu potencial e faça do seu dia algo extraordinário.</div>
+        <div id="date-time"></div>
+    </div>
+</div>
+
+<div id="footer"></div>
+
+<!-- Popup -->
+<div id="popup">
+    <div>
+        <h2 id="popup-title"></h2>
+        <p id="popup-msg"></p>
+        <button onclick="closePopup()">Fechar</button>
+    </div>
+</div>
+
+<script>
+    const image = document.getElementById('image');
+    const footer = document.getElementById('footer');
+    const message = document.getElementById('message');
+    const dateTime = document.getElementById('date-time');
+
+    function updateFooter(visual) {
+        const now = new Date();
+        footer.textContent = `${visual.toUpperCase()} - ${now.toLocaleString()}`;
+    }
+
+    function setVisual(timeOfDay=null) {
+        const now = new Date();
+        let hour = now.getHours();
+        let visual = '';
+
+        if (!timeOfDay) {
+            if(hour >= 6 && hour < 12) {
+                visual = 'manha';
+            } else if(hour >= 12 && hour < 18) {
+                visual = 'tarde';
+            } else {
+                visual = 'noite';
+            }
+        } else {
+            visual = timeOfDay;
+        }
+
+        if(visual === 'manha') {
+            document.body.style.backgroundColor = '#FFD700';
+            image.src = 'img_dia.jpeg';
+        } else if(visual === 'tarde') {
+            document.body.style.backgroundColor = '#FFA500';
+            image.src = 'img_tarde.jpeg';
+        } else {
+            document.body.style.backgroundColor = '#1E3A8A';
+            image.src = 'img_noite.jpeg';
+        }
+
+        updateFooter(visual);
+        showPopup();
+    }
+
+    function showPopup() {
+        const now = new Date();
+        const hour = now.getHours();
+        let saudacao = hour < 12 ? 'Bom dia' : (hour < 18 ? 'Boa tarde' : 'Boa noite');
+        document.getElementById('popup-title').textContent = saudacao;
+        document.getElementById('popup-msg').textContent = `Agora são ${now.toLocaleTimeString()}. Aproveite o momento!`;
+
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Exibir data e hora na caixa de mensagem
+    function updateTextBox() {
+        const now = new Date();
+        dateTime.textContent = `Hoje é ${now.toLocaleDateString()} - ${now.toLocaleTimeString()}`;
+    }
+
+    setVisual();
+    updateTextBox();
+</script>
+
+</body>
+</html>
