@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Visual do Dia</title>
+<link rel="manifest" href="manifest.jsom">
+<meta name = "theme-color" content="#00000">
 <style>
     body {
         margin: 0;
@@ -191,6 +193,13 @@
     setVisual();
     updateTextBox();
 </script>
+<script>
+    if ("seviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("sService Worker registrado"))
+        .catch(err => console.log(" Erro no SW:", err));
 
+    }
+</script>
 </body>
 </html>
